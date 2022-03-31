@@ -83,6 +83,11 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
             <version>${spring-cloud-starter-openfeign.version}</version>
         </dependency>
+        <dependency>
+    		<groupId>commons-net</groupId>
+    		<artifactId>commons-net</artifactId>
+    		<version>3.6</version>
+		</dependency>
 
 		<!-- Swagger 2 Doc Dependency -->
 		<dependency>

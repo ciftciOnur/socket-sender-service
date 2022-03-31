@@ -34,7 +34,7 @@ function disconnect() {
 }
 
 function sendName() {
-    stompClient.send("/app/proof-request", {}, JSON.stringify({'privateId': $("#id").val(),'otpKey': $("#otp").val(),'timeInterval': $("#time").val()}));
+    stompClient.send("/app/proof-request", {}, JSON.stringify({'message': $("#id").val(),'otpKey': $("#otp").val(),'timeInterval': $("#time").val()}));
 }
 
 function showResponse(message) {

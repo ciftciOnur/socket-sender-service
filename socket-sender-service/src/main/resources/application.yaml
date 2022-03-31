@@ -6,3 +6,4 @@ spring:
 
 
 verifier-service.url: http://localhost:8082/
+ntp-service.url: tr.pool.ntp.org

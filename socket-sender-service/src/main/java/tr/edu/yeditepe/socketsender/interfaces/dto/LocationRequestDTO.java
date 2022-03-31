@@ -13,6 +13,6 @@ public class LocationRequestDTO {
 	
 	private String otpKey;
 	
-	private String privateId;
+	private String message;
 
 }

@@ -5,6 +5,7 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
+import tr.edu.yeditepe.socketsender.application.NtpService;
 import tr.edu.yeditepe.socketsender.interfaces.SocketSenderServiceFacade;
 import tr.edu.yeditepe.socketsender.interfaces.VerifierServiceClient;
 import tr.edu.yeditepe.socketsender.interfaces.dto.LocationProofDTO;
@@ -19,14 +20,18 @@ public class WebSocketController {
 	
 	@Autowired
 	VerifierServiceClient verifierServiceClient;
+	
+	@Autowired
+	NtpService ntpService;
 
 	@MessageMapping("/proof-request")
 	@SendTo("/topic/get-proof")
-	public String getProof(String message) throws Exception {
+	public String getProof(LocationRequestDTO message) throws Exception {
+		Long timeStamp = ntpService.getTime();
 		verifierServiceClient.sendRequest(RequestDto.builder()
-				.encryptedString(message)
+				.encryptedString(message.getMessage())
 				.build());
-		return message;
+		return message.getMessage();
 	  }
 	
 	@MessageMapping("/proof-witness")
